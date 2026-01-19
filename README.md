@@ -6,15 +6,15 @@
 
 > **Context-Aware Personalized Federated Learning framework for LLMs via Variational Bayesian LoRA, RFF-based personalization, and Sparse Optimization.**
 
-[cite_start]This repository contains the official PyTorch implementation of **CA-PFL**[cite: 24, 217]. CA-PFL is a novel framework designed to address the challenges of deploying Large Language Models (LLMs) in heterogeneous federated environments. It dynamically generates personalization strategies and optimizes communication efficiency through variational sparse control and random Fourier features.
+This repository contains the official PyTorch implementation of **CA-PFL**. CA-PFL is a novel framework designed to address the challenges of deploying Large Language Models (LLMs) in heterogeneous federated environments. It dynamically generates personalization strategies and optimizes communication efficiency through variational sparse control and random Fourier features.
 
 ## 🚀 Key Features
 
-* [cite_start]**Client-Adaptive Sparsity**: Dynamically assigns LoRA rank based on local data feature distributions to establish sparsity[cite: 30].
-* [cite_start]**Variational Bayesian LoRA**: Utilizes variational Bayesian priors to estimate optimal rank configurations compatible with federated aggregation[cite: 31, 218].
-* [cite_start]**RFF-based Personalization**: Reduces communication cost and enables efficient personalization through Random Fourier Feature (RFF) projection[cite: 32, 221].
-* [cite_start]**Dynamic Sparsification & Error Compensation**: Implements dynamic pruning based on learned $\kappa$ values and maintains an error buffer to ensure convergence[cite: 386].
-* [cite_start]**Communication Efficiency**: Reduces communication overhead by approximately **78%** compared to baselines while maintaining high accuracy[cite: 33, 1081].
+* **Client-Adaptive Sparsity**: Dynamically assigns LoRA rank based on local data feature distributions to establish sparsity.
+* **Variational Bayesian LoRA**: Utilizes variational Bayesian priors to estimate optimal rank configurations compatible with federated aggregation.
+* **RFF-based Personalization**: Reduces communication cost and enables efficient personalization through Random Fourier Feature (RFF) projection.
+* **Dynamic Sparsification & Error Compensation**: Implements dynamic pruning based on learned $\kappa$ values and maintains an error buffer to ensure convergence.
+* **Communication Efficiency**: Reduces communication overhead by approximately **78%** compared to baselines while maintaining high accuracy.
 
 ## 📂 Repository Structure
 
@@ -120,13 +120,5 @@ This acts as a lightweight "Personalized Modulator" that generates the specific 
 ## 3. Dynamic Sparsification  
 Parameters are updated based on the learned importance score $\kappa$. **Smaller $\kappa$ implies less importance** of the corresponding LoRA parameter, allowing for aggressive sparsification (i.e., pruning low-importance parameters). An Error Compensation Buffer (ECB) is introduced to carry over residual errors of pruned parameters to the next round, preventing irreversible information loss during federated updates.
 ## 📜 Citation  
-If you find this code useful for your research, please cite our paper:
-```text
-@inproceedings{capfl2024,
-  title={CA-PFL: Client-adaptive Parameter-efficient Fine-tuning for Personalized Federated Learning},
-  author={Anonymous Author(s)},
-  booktitle={Proceedings of the ACM Web Conference 2024},
-  year={2024},
-  note={Under Review}
-}
+If you find this code useful for your research, please cite our paper
 ```
