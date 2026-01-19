@@ -105,19 +105,19 @@ CA-PFL demonstrates superior performance on heterogeneous non-IID data setups co
 Results based on experiments on OBQA, BoolQ, WinoG, and ARC datasets.
 
 ## 🧩 Methodology Highlights
-## 1. Variational LoRA Estimator  
+### 1. Variational LoRA Estimator  
 We model the LoRA rank selection as a variational inference problem. The model learns a distribution over the sparsity parameter $\kappa$ using a Gamma hyper-prior:  
 
 $$ p(\kappa|\alpha, \beta) = \prod \mathcal{G}(\kappa_i | \alpha, \beta) $$  
 
-## 2. RFF Personalization  
+### 2. RFF Personalization  
 To handle the "cold start" and personalization on edge devices, we use Random Fourier Features to project hidden states into a low-dimensional manifold:  
 
 $$ z_i = \sqrt{\frac{2}{D}} [\cos(\omega^T h_i + b), \sin(\omega^T h_i + b)] $$  
 
 This acts as a lightweight "Personalized Modulator" that generates the specific $\alpha$ and $\beta$ parameters for each client.  
 
-## 3. Dynamic Sparsification  
+### 3. Dynamic Sparsification  
 Parameters are updated based on the learned importance score $\kappa$. **Smaller $\kappa$ implies less importance** of the corresponding LoRA parameter, allowing for aggressive sparsification (i.e., pruning low-importance parameters). An Error Compensation Buffer (ECB) is introduced to carry over residual errors of pruned parameters to the next round, preventing irreversible information loss during federated updates.
 ## 📜 Citation  
 If you find this code useful for your research, please cite our paper
