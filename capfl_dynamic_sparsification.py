@@ -8,8 +8,8 @@ def dynamic_sparsification_with_kappa(delta_params, kappa, base_ratio=0.25):
     """
     Dynamically sparsify parameter updates based on learned κ values
     
-    Larger κ value -> Less important dimension -> Easier to be sparsified
-    Smaller κ value -> More important dimension -> Easier to be retained
+    Smaller κ value -> Less important dimension -> Easier to be retained
+    Larger κ value -> More important dimension -> Easier to be sparsified
     
     Args:
         delta_params: dict, {param_name: delta_tensor}
@@ -31,8 +31,7 @@ def dynamic_sparsification_with_kappa(delta_params, kappa, base_ratio=0.25):
             # Use κ values of the corresponding layer
             kappa_l = kappa[layer_idx]  # [r]
             
-            # Calculate importance score for each column (reciprocal of κ)
-            # importance_scores = 1.0 / (kappa_l + 1e-8)  # [r]
+            # Calculate importance score for each column
             importance_scores = kappa_l
             
             # Dynamically adjust retention ratio based on importance
